@@ -17,6 +17,9 @@ guesses_taken = 0
 
 @app.route("/range", methods=["POST"])
 def enter_the_range():
+    ''' 
+        function for user to enter the range  
+        '''
     data = request.get_json()
     rangestart = data.get("rangestart")
     rangestop = data.get("rangestop")
@@ -28,12 +31,18 @@ def enter_the_range():
 
 
 def generate_score(guesses_taken):
+    '''
+    fuction to generate the score 
+    '''
     initial_score = 5
     score = initial_score - guesses_taken
     return score
 
 @app.route("/guess", methods=["POST"])
 def guess_the_random_number():
+    '''
+    fuction for the user to guess what the random number is.
+    '''
     data = request.get_json()
     guess = int(data.get("guess"))
     hints = [] 
